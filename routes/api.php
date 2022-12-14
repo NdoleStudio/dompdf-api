@@ -1,6 +1,8 @@
 <?php
 
+use Dompdf\Options;
 use Illuminate\Http\Request;
+use Dompdf\Dompdf;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +16,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth.basic')->get('/', function (Request $request) {
+    // instantiate and use the dompdf class
+    $dompdf = new Dompdf();
+    $options = new Options();
+    $options->setIsRemoteEnabled(true);
+    $dompdf->setOptions($options);
+    $dompdf->loadHtml($request->getContent());
+
+    $dompdf->render();
+
+    return response($dompdf->output(), 200, [
+        'Content-type'        => 'application/pdf',
+        'Content-Disposition' => 'attachment; filename="api.pdf"',
+    ]);
 });

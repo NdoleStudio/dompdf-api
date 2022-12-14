@@ -108,4 +108,9 @@ return [
 
     'password_timeout' => 10800,
 
+    'basic' => [
+        'username' => env('AUTH_USERNAME'),
+        'password' => env('AUTH_PASSWORD')
+    ]
+
 ];
