@@ -1,9 +1,8 @@
 Dompdf API
 ==========
 
-This project provides an HTTP api wrapper around the [dompdf](https://github.com/dompdf/dompdf) library which converts HTML to PDF. The API is created
+This project provides an HTTP API wrapper around the [dompdf](https://github.com/dompdf/dompdf) library which converts HTML to PDF. The API is created
 using the Laravel framework, and you can protect the API using the [basic HTTP authentication scheme](https://datatracker.ietf.org/doc/html/rfc7617).
-
 
 ## Security Vulnerabilities
 
