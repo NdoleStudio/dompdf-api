@@ -1,4 +1,4 @@
-Dompdf API
+dompdf API
 ==========
 
 This project provides an HTTP API wrapper around the [dompdf](https://github.com/dompdf/dompdf) library which converts HTML to PDF. The API is created
