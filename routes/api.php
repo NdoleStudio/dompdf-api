@@ -31,3 +31,9 @@ Route::middleware('auth.basic')->get('/ping', function () {
         "version" => config('app.version')
     ]);
 });
+
+Route::middleware('auth.basic')->any("{any?}", function () {
+    return response(Response::$statusTexts[Response::HTTP_NOT_FOUND], Response::HTTP_NOT_FOUND);
+})->where('any', '.*');
+
+
