@@ -16,10 +16,10 @@ Run the docker container using the command below
 docker run -p 8000:80 ndolestudio/dompdf-api
 ```
 
-Make an HTTP request to convert an HTML string into a PDF
+Make an HTTP request to convert an HTML string into a PDF file called `document.pdf`
 
 ```bash
-curl -X POST -d '<h1>Hello World</h1>' http://localhost:8000
+curl -X POST -d '<h1>Hello World</h1>' http://localhost:8000 --output document.pdf
 ```
 
 ## Authentication
@@ -34,9 +34,10 @@ docker run -p 8000:80 --env APP_USERNAME="username" --env APP_PASSWORD="password
 
 ```bash
 ## username:password in base64 is dXNlcm5hbWU6cGFzc3dvcmQ=
-curl -X POST -d '<h1>Hello World</h1>' -H 'Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=' http://localhost:8000
+curl  -X POST -d '<h1>Hello World</h1>' \
+      -H 'Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=' \
+      http://localhost:8000 --output document.pdf
 ```
-
 
 ## Security Vulnerabilities
 
