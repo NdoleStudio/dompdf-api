@@ -34,9 +34,12 @@ jobs:
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+        tags: |
+          # set latest tag for default branch
+          type=raw,value=latest,enable={{is_default_branch}}
         with:
           images: |
-            ndolestudio/dompdf-api:latest
+            ndolestudio/dompdf-api
             ghcr.io/${{ github.repository }}
 
       - name: Build and push docker image
