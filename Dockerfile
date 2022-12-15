@@ -15,6 +15,9 @@ COPY . .
 RUN chown -R www-data /var/www
 USER www-data
 
+RUN cp .env.example .env
+RUN php artisan key:generate
+
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN composer install
 
