@@ -55,10 +55,13 @@ class AuthBasic
      */
     private function unauthorizedResponse(string $message): JsonResponse
     {
-        return response()->json([
-            'status' => 401,
-            'message' => $message
-        ])->setStatusCode(Response::HTTP_UNAUTHORIZED);
+        return response()
+            ->json([
+                'status' => 401,
+                'message' => $message
+            ])
+            ->header("WWW-Authenticate", "Basic")
+            ->setStatusCode(Response::HTTP_UNAUTHORIZED);
     }
 
     /**
