@@ -24,10 +24,13 @@ curl -X POST -d '<h1>Hello World</h1>' http://localhost:8000 --output document.p
 
 ## Authentication
 
-If you want to protect the API with basic auth, you can set the `AUTH_USERNAME` and `AUTH_PASSWORD` enviornment variables when running the docker container
+If you want to protect the API with basic auth, you can set the `AUTH_USERNAME` and `AUTH_PASSWORD` environment variables when running the docker container
 
 ```bash
-docker run -p 8000:80 --env APP_USERNAME="username" --env APP_PASSWORD="password" ndolestudio/dompdf-api
+docker run -p 8000:80 \
+      --env AUTH_USERNAME="username" \
+      --env AUTH_PASSWORD="password" \
+      ndolestudio/dompdf-api
 ```
 
 **NOTE:** You must now set the username and password when making requests to the API
@@ -41,8 +44,8 @@ curl  -X POST -d '<h1>Hello World</h1>' \
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Acho Arnold via [arnold@ndolestudio.com](mailto:arnold@ndolestudio.com). All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within the dompdf-api service, please send an e-mail to Acho Arnold via [arnold@ndolestudio.com](mailto:arnold@ndolestudio.com). All security vulnerabilities will be promptly addressed.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+dompdf-api is an open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

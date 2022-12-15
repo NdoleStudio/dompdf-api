@@ -25,19 +25,20 @@ class AuthBasic
             return $next($request);
         }
 
-        $authHeader = $request->header('Authorization');
-
+        $authHeader = $this->basicToken($request);
         $decodedHeader = base64_decode($authHeader);
+
         if ($decodedHeader === false || count(explode(":", $decodedHeader)) != 2) {
             return $this->unauthorizedResponse(sprintf("The [Authorization] header [%s] is not a valid base64 string. Set the valid [Basic] auth header.", $authHeader));
         }
 
         $username = explode(":", $decodedHeader)[0];
         $password = explode(":", $decodedHeader)[1];
-        if ($expectedUsername === $username && $expectedPassword === $password) {
+
+        if ($expectedUsername !== $username || $expectedPassword !== $password) {
             return $this->unauthorizedResponse(
                 sprintf(
-                    "The [Authorization] header [%s] contains an invalid username [%s] and password [%s]",
+                    "The [Authorization] header [%s] contains an invalid username [%s] and/or password [%s]",
                     $authHeader,
                     $username,
                     $password
