@@ -1,5 +1,8 @@
 FROM php:8-apache
 
+ARG APP_VERSION
+ENV APP_VERSION=$APP_VERSION
+
 WORKDIR /var/www
 
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
