@@ -8,8 +8,13 @@ RUN chmod +x /usr/local/bin/install-php-extensions && install-php-extensions gd
 RUN a2enmod rewrite
 
 COPY . .
+
+USER www-data
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN composer install
+
+USER root
+
 RUN rm -rf /var/www/html && ln -s /var/www/public /var/www/html
 RUN chown -R www-data /var/www
 
