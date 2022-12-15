@@ -9,13 +9,12 @@ RUN a2enmod rewrite
 
 COPY . .
 
+RUN chown -R www-data /var/www
 USER www-data
+
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN composer install
 
-USER root
-
 RUN rm -rf /var/www/html && ln -s /var/www/public /var/www/html
-RUN chown -R www-data /var/www
 
 EXPOSE 80
