@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Dompdf\Dompdf;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +14,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(Dompdf::class, function () {
+            $options = new Options();
+            $options->setIsRemoteEnabled(true);
+
+            $dompdf = new Dompdf();
+            $dompdf->setOptions($options);
+
+            return $dompdf;
+        });
     }
 
     /**

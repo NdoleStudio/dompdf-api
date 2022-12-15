@@ -1,9 +1,9 @@
 <?php
 
-use Dompdf\Options;
 use Illuminate\Http\Request;
 use Dompdf\Dompdf;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\HttpFoundation\Response;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,18 +16,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth.basic')->get('/', function (Request $request) {
-    // instantiate and use the dompdf class
-    $dompdf = new Dompdf();
-    $options = new Options();
-    $options->setIsRemoteEnabled(true);
-    $dompdf->setOptions($options);
+Route::middleware('auth.basic')->post('/', function (Request $request, Dompdf $dompdf) {
     $dompdf->loadHtml($request->getContent());
-
     $dompdf->render();
-
-    return response($dompdf->output(), 200, [
+    return response($dompdf->output(), Response::HTTP_OK, [
         'Content-type'        => 'application/pdf',
-        'Content-Disposition' => 'attachment; filename="api.pdf"',
+        'Content-Disposition' => 'attachment; filename="document.pdf"',
+    ]);
+});
+
+Route::middleware('auth.basic')->get('/ping', function () {
+    return response()->json([
+        "success" => true,
+        "version" => config('app.version')
     ]);
 });
