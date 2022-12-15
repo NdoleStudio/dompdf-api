@@ -19,7 +19,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN composer install
 
 RUN cp .env.example .env
-RUN php artisan key:generate
+RUN php artisan key:generate --ansi
 
 RUN rm -rf /var/www/html && ln -s /var/www/public /var/www/html
 
