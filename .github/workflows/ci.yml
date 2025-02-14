@@ -56,6 +56,6 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
-          repository: ndolestudio/httpmock
+          repository: ndolestudio/dompdf-api
           readme-filepath: ./README.md
         if: github.event_name != 'pull_request'
