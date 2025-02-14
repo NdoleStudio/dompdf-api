@@ -4,6 +4,7 @@ dompdf API
 [![Build](https://github.com/NdoleStudio/dompdf-api/actions/workflows/ci.yml/badge.svg)](https://github.com/NdoleStudio/dompdf-api/actions/workflows/ci.yml)
 [![GitHub contributors](https://img.shields.io/github/contributors/NdoleStudio/dompdf-api)](https://github.com/NdoleStudio/dompdf-api/graphs/contributors)
 [![GitHub license](https://img.shields.io/github/license/NdoleStudio/dompdf-api?color=brightgreen)](https://github.com/NdoleStudio/dompdf-api/blob/master/LICENSE)
+[![Docker Pulls](https://img.shields.io/docker/pulls/ndolestudio/dompdf-api)](https://hub.docker.com/r/ndolestudio/dompdf-api)
 
 This project provides an HTTP API wrapper around the [dompdf](https://github.com/dompdf/dompdf) library which converts HTML to PDF. The API is created
 using the Laravel framework, and you can protect the API using the [basic HTTP authentication scheme](https://datatracker.ietf.org/doc/html/rfc7617).
