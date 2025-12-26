@@ -1,4 +1,4 @@
-FROM php:8-apache
+FROM php:8.4-apache
 
 ARG APP_VERSION
 ENV APP_VERSION=$APP_VERSION
